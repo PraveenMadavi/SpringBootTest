@@ -9,7 +9,7 @@ public class SbstApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SbstApplication.class, args);
 
-		System.out.println("SBSecurity application started.............................................................+>");
+		System.out.println("SBSecurity application started. ------------------------------------------------------------------------------------------->>");
 
 	}
 }
