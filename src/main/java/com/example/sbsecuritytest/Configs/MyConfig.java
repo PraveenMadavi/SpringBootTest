@@ -2,6 +2,7 @@ package com.example.sbsecuritytest.Configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +17,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class MyConfig {
 
     @Bean
@@ -27,15 +29,15 @@ public class MyConfig {
         // http.sessionManagement(session ->
         // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.formLogin(withDefaults());
-        http.httpBasic(withDefaults());
+        http.httpBasic(withDefaults()); 
         return http.build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user1 = User.withUsername("user1").password("{noop}mypassword").roles("user").build();
-        UserDetails user2 = User.withUsername("user2").password("{noop}mypassword2").roles("user").build();
-        return new InMemoryUserDetailsManager(user1, user2);
+        UserDetails admin = User.withUsername("admin").password("{noop}mypassword2").roles("admin").build();
+        return new InMemoryUserDetailsManager(user1, admin);
     }
 
 }
