@@ -24,7 +24,6 @@ public class MyConfig {
     SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                 (requests) -> requests.requestMatchers("/").permitAll().anyRequest().authenticated());
-
         // for stateless session creation
         // http.sessionManagement(session ->
         // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

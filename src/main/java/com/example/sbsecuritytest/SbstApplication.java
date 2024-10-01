@@ -10,6 +10,5 @@ public class SbstApplication {
 		SpringApplication.run(SbstApplication.class, args);
 
 		System.out.println("SBSecurity application started. ------------------------------------------------------------------------------------------->>");
-
 	}
 }
